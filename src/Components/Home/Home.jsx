@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [data, setData] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -11,6 +13,20 @@ const Home = () => {
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, []);
+
+
+  const handleDelete = (id) => {
+    const confirm = window.confirm("Are you want to Delete?");
+    if(confirm){
+      axios.delete(`http://localhost:3000/users/${id}`)
+      .then(res=>{
+        location.reload();
+      }).catch(err => console.log(err));
+    }
+  }
+
+
+
 
   return (
     <div className="container mt-5">
