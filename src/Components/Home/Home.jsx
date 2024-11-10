@@ -44,9 +44,9 @@ const Home = () => {
                 <td>{list.phone}</td>
                 <td>{list.website}</td>
                 <td>
-                  <button className="btn btn-info">Read</button>
-                  <button className="btn btn-primary mx-2">Edit</button>
-                  <button className="btn btn-danger">Delete</button>
+                  <Link to={`/read/${list.id}`} className="btn btn-info">Read</Link>
+                  <Link to={`/update/${list.id}`} className="btn btn-primary mx-2">Edit</Link>
+                  <button onClick={e => handleDelete(list.id)} className="btn btn-danger">Delete</button>
                 </td>
               </tr>
             ))}
